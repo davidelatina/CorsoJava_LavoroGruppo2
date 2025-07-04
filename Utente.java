@@ -6,6 +6,14 @@ public class Utente {
   private String idUtente; // Identificativo univoco dell’utente
   private ArrayList<Risorsa> prestiti; // Lista delle risorse attualmente in prestito
 
+  public Risorsa getResource(String id) {
+    for (Risorsa risorsa : prestiti) {
+      if (risorsa.getCodice().equals(id)) {
+        return risorsa;
+      }
+    }
+  }
+
   // Costruttore: inizializza nome, id e crea una lista vuota di prestiti
   public Utente(String nome, String idUtente) {
     this.nome = nome;
@@ -30,9 +38,12 @@ public class Utente {
   }
 
   // Metodo per restituire una risorsa
-  public void restituisci(Risorsa r) {
+  public Risorsa restituisci(Risorsa r) {
+    Risorsa temp = r;
     prestiti.remove(r); // metodo remove per rimuovere una risorsa
     System.out.println(nome + " ha restituito: " + r.getTitolo());
+
+    return r;
   }
 
   // Metodo per stampare tutte le risorse attualmente in prestito

@@ -112,29 +112,104 @@ class Biblioteca {
   aggiungere risorse/utenti,
   stampare l’inventario completo (usando il polimorfismo su visualizzaDettagli), cercare risorse per titolo.
   */
+
+  Biblioteca(String nome) {
+    this.nome = nome;
+  }
   
-  void addUtente(String nomeUtente) {
-    //utenti.add()
-  }
+  public void prestaRisorsa(String id, String codice) {
+    
+    for (Utente u : utenti) {
+      if (u.getIdUtente().equals(id)) {
 
-  void addRisorsa(String nomeUtente, String idUtente) {
-    risorse.add(new Utente(nomeUtente, idUtente))
-  }
-
-  void printResources() {
-    for (Risorsa risorsa : risorse) {
-      // risorsa.visualizzaDettagli()
+      }
     }
+    
   }
 
-  void searchResourceByName(String key) {
+  void restituisciRisorsa(String id, String codice) {
+    // controlla id
+    boolean cont = false;
+    for (Utente u : utenti) {
+      if (u.getIdUtente().equals(id)) {
+        cont = true;
+        break;
+      }
+    }
+    if (!cont) {
+      return;
+    }
+    // controlla codice
+    Utente u = getUserFromId(id);
 
-    System.out.println("Risultato ricerca: ");
     for (Risorsa risorsa : risorse) {
-      if (risorsa.getName().toLowerCase().contains(key.toLowerCase())) {
-        // risorsa.visualizzaDettagli()
+      if () {
+        getRe
+      }
+    }
+
+    // restituisci
+
+
+    restituisci(r);
+
+
+
+  }
+
+  Utente getUserFromId(String id) {
+    for (Utente utente : utenti) {
+      if (utente.getIdUtente().equals(id)) {
+        return utente;
+      }
+      
+    }
+    return utenti.get(0);
+  }
+
+  void stampaRisorseUtente(String id) {
+    Utente u = getUserFromId(id);
+
+    for (Utente utente : utenti) {
+      if (utente.equals(u)) {
+        u.stampaPrestiti();
       }
     }
   }
 
+  void aggiungiUtente(Utente utente) {
+    utenti.add(utente);
+    //utenti.add()
+  }
+
+  void aggiungiRisorsa(Risorsa r) {
+    risorse.add(r);
+  }
+
+  void stampaInventario() {
+    for (Risorsa risorsa : risorse) {
+      risorsa.visualizzaDettagli();
+    }
+  }
+
+  void cercaPerTitolo(String key) {
+
+    System.out.println("Risultato ricerca: ");
+    for (Risorsa risorsa : risorse) {
+      if () {
+        // risorsa.visualizzaDettagli()
+      }
+    }
+  }
+/*
+  void searchResourceByAuthor(String key) {
+
+    System.out.println("Risultato ricerca: ");
+    for (Risorsa risorsa : risorse) {
+      if (risorsa.getAuthor().toLowerCase().contains(key.toLowerCase())) {
+        // risorsa.visualizzaDettagli()
+      }
+    }
+  }
+*/
 }
