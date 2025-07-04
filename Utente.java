@@ -6,12 +6,13 @@ public class Utente {
   private String idUtente; // Identificativo univoco dell’utente
   private ArrayList<Risorsa> prestiti; // Lista delle risorse attualmente in prestito
 
-  public Risorsa getResource(String id) {
+  public Risorsa getResource(String codice) {
     for (Risorsa risorsa : prestiti) {
-      if (risorsa.getCodice().equals(id)) {
+      if (risorsa.getCodice().equals(codice)) {
         return risorsa;
       }
     }
+    return prestiti.get(0);
   }
 
   // Costruttore: inizializza nome, id e crea una lista vuota di prestiti
