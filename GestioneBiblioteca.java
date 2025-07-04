@@ -115,6 +115,8 @@ class Biblioteca {
 
   Biblioteca(String nome) {
     this.nome = nome;
+    this.risorse = new ArrayList<>();
+    this.utenti = new ArrayList<>();
   }
   
   public void prestaRisorsa(String id, String codice) {
@@ -129,32 +131,12 @@ class Biblioteca {
 
   void restituisciRisorsa(String id, String codice) {
     // controlla id
-    boolean cont = false;
-    for (Utente u : utenti) {
-      if (u.getIdUtente().equals(id)) {
-        cont = true;
-        break;
-      }
-    }
-    if (!cont) {
-      return;
-    }
     // controlla codice
     Utente u = getUserFromId(id);
-
-    for (Risorsa risorsa : risorse) {
-      if () {
-        getRe
-      }
-    }
+    Risorsa r = u.getResource(codice);
 
     // restituisci
-
-
-    restituisci(r);
-
-
-
+    u.restituisci(r);
   }
 
   Utente getUserFromId(String id) {
@@ -196,8 +178,8 @@ class Biblioteca {
 
     System.out.println("Risultato ricerca: ");
     for (Risorsa risorsa : risorse) {
-      if () {
-        // risorsa.visualizzaDettagli()
+      if (risorsa.getTitolo().toLowerCase().contains(key.toLowerCase())) {
+        risorsa.visualizzaDettagli();
       }
     }
   }
