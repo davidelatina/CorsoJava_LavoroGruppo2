@@ -123,10 +123,17 @@ class Biblioteca {
     
     for (Utente u : utenti) {
       if (u.getIdUtente().equals(id)) {
-
+        for (Risorsa r : risorse) {
+          if (r.getCodice().equals(codice)) {
+            u.prendiInPrestito(r);
+            risorse.remove(r);
+            return;
+          }
+        }
+        break;
       }
     }
-    
+    System.out.println("Libro non trovato.");
   }
 
   void restituisciRisorsa(String id, String codice) {
@@ -137,6 +144,7 @@ class Biblioteca {
 
     // restituisci
     u.restituisci(r);
+    risorse.add(r);
   }
 
   Utente getUserFromId(String id) {
